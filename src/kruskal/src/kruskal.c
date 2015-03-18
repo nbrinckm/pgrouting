@@ -77,11 +77,10 @@ kruskal_minspanningtree(PG_FUNCTION_ARGS)
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-      int ret = compute_kshortest_path(pgr_text2char(PG_GETARG_TEXT_P(0)), /* SQL string */
+      int ret = compute(pgr_text2char(PG_GETARG_TEXT_P(0)), /* SQL string */
                                   PG_GETARG_INT64(1),             /* source id */
                                   PG_GETARG_INT64(2),             /* target_id */
-                                  PG_GETARG_INT32(3),             /* number of paths */
-                                  PG_GETARG_BOOL(4), 		  /* has reverse_cost */
+                                  PG_GETARG_BOOL(3), 		  /* has reverse_cost */
 				  &path,
 				  &path_count);
 //      toDel=path;
@@ -165,8 +164,8 @@ kruskal_minspanningtree(PG_FUNCTION_ARGS)
 
 
 
-int compute_kshortest_path(char* sql, int64_t start_vertex, 
-			 int64_t end_vertex, int no_paths, 
+int compute(char* sql, int64_t start_vertex, 
+			 int64_t end_vertex,  
 			 bool has_reverse_cost, 
 			 pgr_path_element3_t **ksp_path, int *path_count) 
 {
@@ -272,9 +271,9 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
 
   DBG("Calling doKpaths\n");
         
-  ret = doKpaths(edges, total_tuples,
-			start_vertex, end_vertex,
-                       no_paths, has_reverse_cost,
+  ret = doKruskal(edges, total_tuples,
+		       start_vertex, end_vertex,
+                       has_reverse_cost,
                        ksp_path, path_count, &err_msg);
   DBG("total tuples found %i\n",*path_count);
   DBG("Exist Status = %i\n", ret);

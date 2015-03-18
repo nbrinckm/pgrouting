@@ -17,9 +17,9 @@ static  void dpPrint(const KSPGraph &theGraph,
                      int &sequence, int route_id);
 static  pgr_path_element3_t * noPathFound(long start_id);
 
-int  doKpaths(pgr_edge_t  * edges, long total_tuples,
+int  doDijkstra(pgr_edge_t  * edges, long total_tuples,
                        long  start_vertex, long  end_vertex,
-                       int no_paths, bool has_reverse_cost,
+                       bool has_reverse_cost,
                        pgr_path_element3_t **path, int *path_count,
                        char ** err_msg) {
    try {

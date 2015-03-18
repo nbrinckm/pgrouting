@@ -11,9 +11,9 @@
 extern "C" {
 #endif
 
-int  doKpaths(pgr_edge_t  * edges, long total_tuples,
+int  doDijkstra(pgr_edge_t  * edges, long total_tuples,
                       long  start_vertex, long end_vertex,
-                      int no_paths, bool has_reverse_cost,
+                      bool has_reverse_cost,
                       pgr_path_element3_t **ksp_path, int *path_count,
                       char ** err_msg);
 

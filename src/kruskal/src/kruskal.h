@@ -37,8 +37,8 @@ extern "C"
 {
 #endif
 
-int compute_kshortest_path(char* sql, int64_t start_vertex, 
-                                 int64_t end_vertex, int no_paths, 
+int compute(char* sql, int64_t start_vertex, 
+                                 int64_t end_vertex,  
                                  bool has_reverse_cost, 
                                  pgr_path_element3_t **path, int *ksp_path_count) ;
 
