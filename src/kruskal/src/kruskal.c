@@ -34,9 +34,9 @@
 #include "./kruskalDriver.h"
 
 #ifndef _MSC_VER
-Datum kshortest_path(PG_FUNCTION_ARGS);
+Datum kruskal_minspanningtree(PG_FUNCTION_ARGS);
 #else // _MSC_VER
-PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum kruskal_minspanningtree(PG_FUNCTION_ARGS);
 #endif // _MSC_VER
 
 
@@ -46,14 +46,14 @@ PG_MODULE_MAGIC;
 #endif
 
 
-PG_FUNCTION_INFO_V1(kshortest_path);
+PG_FUNCTION_INFO_V1(kruskal_minspanningtree);
 #ifndef _MSC_VER
 Datum
 #else // _MSC_VER
 PGDLLEXPORT Datum
 #endif // _MSC_VER
 
-kshortest_path(PG_FUNCTION_ARGS)
+kruskal_minspanningtree(PG_FUNCTION_ARGS)
 {
   FuncCallContext     *funcctx;
   int                  call_cntr;

@@ -2,16 +2,9 @@
 -- Function for k shortest_path computation
 -- See README for description
 -----------------------------------------------------------------------
-/* original query   (also Yen*.cpp has to be modified)
-CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id integer, target_id integer, no_paths integer, has_reverse_cost boolean)
-    RETURNS SETOF pgr_costResult3
-    AS '$libdir/librouting_ksp', 'kshortest_path'
-    LANGUAGE c IMMUTABLE STRICT;
-*/
-
 CREATE OR REPLACE FUNCTION _pgr_kruskal(sql text, source_id bigint, target_id bigint, no_paths integer, has_reverse_cost boolean)
     RETURNS SETOF pgr_costResult3Big
-    AS '$libdir/librouting_kruskal', 'kshortest_path'
+    AS '$libdir/librouting_kruskal', 'kruskal_minspanningtree'
     LANGUAGE c IMMUTABLE STRICT;
 
 
