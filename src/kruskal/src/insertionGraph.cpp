@@ -4,22 +4,22 @@ extern "C" {
 }
 
 #include "insertionGraph.h"
-KSPGraph::KSPGraph(void) {}
-KSPGraph::~KSPGraph(void) {}
-KSPGraph::KSPGraph(const Graph& g):Graph(g) {}
-KSPGraph::KSPGraph(const std::string & f):Graph(f) {}
-void KSPGraph::StartLoad() { clear();}
-void KSPGraph::EndLoad(void) {}
-void KSPGraph::clear(void) { Graph::clear();}
+insertionGraph::insertionGraph(void) {}
+insertionGraph::~insertionGraph(void) {}
+insertionGraph::insertionGraph(const Graph& g):Graph(g) {}
+insertionGraph::insertionGraph(const std::string & f):Graph(f) {}
+void insertionGraph::StartLoad() { clear();}
+void insertionGraph::EndLoad(void) {}
+void insertionGraph::clear(void) { Graph::clear();}
 
-void KSPGraph::AddData(pgr_edge_t  *edges,  UINT total_tuples, bool has_reverse_cost) {
+void insertionGraph::AddData(pgr_edge_t  *edges,  UINT total_tuples, bool has_reverse_cost) {
        for (UINT i = 0; i < total_tuples; i++) {
             insertTuple(edges[i].id, edges[i].source, edges[i].target,
             edges[i].cost, edges[i].reverse_cost, has_reverse_cost);
        }
 }
 
-void KSPGraph::insertTuple(long id, long source, long target,
+void insertionGraph::insertTuple(long id, long source, long target,
                 float cost, float reverse_cost, bool has_reverse_cost) {
     if (cost >= 0 || (reverse_cost>= 0 && has_reverse_cost)) {
        BaseVertex* sourcePos = getNewVertex(source);

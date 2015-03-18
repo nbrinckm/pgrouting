@@ -23,13 +23,13 @@ struct Vertex {
 \param[in] sink: original id of the sink
 \Returns BasePath
 */
-std::deque<BaseEdge> DijkstraShortestPathAlg::Dijkstra(long source, long sink) {
-        std::deque<BaseEdge> emptyPath;
+BasePath DijkstraShortestPathAlg::Dijkstra(long source, long sink, bool dummy ) {
+        BasePath emptyPath;
         if (source != sink) {
              BaseVertex* sourcePt = find_vertex(source);
              BaseVertex* sinkPt = find_vertex(sink);
              if ((sourcePt == NULL) || (sinkPt == NULL)) return emptyPath;
-             return boostDijkstra(sourcePt->ID(), sinkPt->ID()).Path();
+             return boostDijkstra(sourcePt->ID(), sinkPt->ID());
         }
         return emptyPath;
 }

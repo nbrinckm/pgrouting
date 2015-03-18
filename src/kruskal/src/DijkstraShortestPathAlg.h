@@ -34,7 +34,7 @@ class DijkstraShortestPathAlg: public Graph {
        ///@{
 
        //! Dijkstra using the original ids
-       std::deque<BaseEdge> Dijkstra(long source, long sink);
+       BasePath Dijkstra(long source, long sink, bool dummy);
        //! Dijkstra using the graph's IDs
        BasePath Dijkstra(UINT source, UINT sink);
        ///@}

@@ -1,5 +1,5 @@
-#ifndef SRC_KSP_SRC_KSPGRAPH_H_
-#define SRC_KSP_SRC_KSPGRAPH_H_
+#ifndef SRC_insertion_SRC_insertionGRAPH_H_
+#define SRC_insertion_SRC_insertionGRAPH_H_
 
 #include <string>
 
@@ -11,12 +11,12 @@ extern "C" {
 #include "./../../common/src/Graph.h"
 
 
-class KSPGraph : public Graph {
+class insertionGraph : public Graph {
  public:
-    ~KSPGraph();
-    explicit KSPGraph(const Graph&);
-    KSPGraph();
-    explicit KSPGraph(const std::string &);
+    ~insertionGraph();
+    explicit insertionGraph(const Graph&);
+    insertionGraph();
+    explicit insertionGraph(const std::string &);
     void AddData(pgr_edge_t *edges,  UINT total_tuples, bool has_reverse_cost);
     void insertTuple(long edgeId, long source, long target,
                      float cost, float reverse_cost, bool has_reverse_cost);
@@ -25,4 +25,4 @@ class KSPGraph : public Graph {
     void EndLoad();
     void clear();
 };
-#endif  // SRC_KSP_SRC_KSPGRAPH_H_
+#endif  // SRC_insertion_SRC_insertionGRAPH_H_

@@ -34,9 +34,9 @@
 #include "./kruskalDriver.h"
 
 #ifndef _MSC_VER
-Datum kruskal_minspanningtree(PG_FUNCTION_ARGS);
+Datum dijkstra_path(PG_FUNCTION_ARGS);
 #else // _MSC_VER
-PGDLLEXPORT Datum kruskal_minspanningtree(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum dijkstra_path(PG_FUNCTION_ARGS);
 #endif // _MSC_VER
 
 
@@ -46,14 +46,14 @@ PG_MODULE_MAGIC;
 #endif
 
 
-PG_FUNCTION_INFO_V1(kruskal_minspanningtree);
+PG_FUNCTION_INFO_V1(dijkstra_path);
 #ifndef _MSC_VER
 Datum
 #else // _MSC_VER
 PGDLLEXPORT Datum
 #endif // _MSC_VER
 
-kruskal_minspanningtree(PG_FUNCTION_ARGS)
+dijkstra_path(PG_FUNCTION_ARGS)
 {
   FuncCallContext     *funcctx;
   int                  call_cntr;
@@ -199,25 +199,25 @@ int compute(char* sql, int64_t start_vertex,
 #endif
 
 
-  DBG("Starting kshortest_path %s\n",sql);
+  DBG("Starting Dijkstra_path %s\n",sql);
         
   SPIcode = SPI_connect();
   if (SPIcode  != SPI_OK_CONNECT)
     {
-      elog(ERROR, "kshortest_path: couldn't open a connection to SPI");
+      elog(ERROR, "Dijkstra_path: couldn't open a connection to SPI");
       return -1;
     }
 
   SPIplan = SPI_prepare(sql, 0, NULL);
   if (SPIplan  == NULL)
     {
-      elog(ERROR, "kshortest_path: couldn't create query plan via SPI");
+      elog(ERROR, "Dijkstra_path: couldn't create query plan via SPI");
       return -1;
     }
 
   if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) 
     {
-      elog(ERROR, "shortest_path: SPI_cursor_open('%s') returns NULL", sql);
+      elog(ERROR, "Dijkstra_path: SPI_cursor_open('%s') returns NULL", sql);
       return -1;
     }
 
@@ -271,7 +271,7 @@ int compute(char* sql, int64_t start_vertex,
 
   DBG("Calling doKpaths\n");
         
-  ret = doKruskal(edges, total_tuples,
+  ret = doDijkstra(edges, total_tuples,
 		       start_vertex, end_vertex,
                        has_reverse_cost,
                        ksp_path, path_count, &err_msg);

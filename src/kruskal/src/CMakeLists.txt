@@ -12,7 +12,6 @@ else(APPLE)
 endif(APPLE)
 
 set(routing_kruskal_SRCS DijkstraShortestPathAlg.cpp DijkstraShortestPathAlg.h
-                     YenTopKShortestPathsAlg.cpp YenTopKShortestPathsAlg.h
                      kruskal.c kruskal.h
                      kruskalDriver.cpp
                      insertionGraph.h insertionGraph.cpp
