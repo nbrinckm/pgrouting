@@ -11,7 +11,8 @@ else(APPLE)
     set(LIBRARY_MODE_TARGET "SHARED")
 endif(APPLE)
 
-set(routing_ksp_SRCS DijkstraShortestPathAlg.cpp DijkstraShortestPathAlg.h
+set(routing_ksp_SRCS 
+                     ./../../kruskal/src/DijkstraShortestPathAlg.cpp ./../../kruskal/src/DijkstraShortestPathAlg.h
                      YenTopKShortestPathsAlg.cpp YenTopKShortestPathsAlg.h
                      ksp.c ksp.h
                      KSPDriver.cpp

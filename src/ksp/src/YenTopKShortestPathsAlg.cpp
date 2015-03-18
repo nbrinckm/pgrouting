@@ -3,7 +3,7 @@
 #include "./../../common/src/signalhandler.h"
 #include "./../../common/src/vrp_assert.h"
 #include "./../../common/src/GraphElements.h"
-#include "./DijkstraShortestPathAlg.h"
+#include "./../../kruskal/src/DijkstraShortestPathAlg.h"
 #include "./YenTopKShortestPathsAlg.h"
 
 
