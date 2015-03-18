@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "postgres.h"
 
-#include "./postgres_types.h"
+#include "./../../ksp/src/postgres_types.h"
 
 #ifdef __cplusplus
 extern "C" {

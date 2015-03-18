@@ -7,8 +7,8 @@
 #include "./KSPGraph.h"
 #include "./YenTopKShortestPathsAlg.h"
 extern "C" {
-#include "./postgres_types.h"
-#include "./ksp.h"
+#include "./../../ksp/src/postgres_types.h"
+#include "./kruskal.h"
 }
 
 static  void dpPrint(const KSPGraph &theGraph,

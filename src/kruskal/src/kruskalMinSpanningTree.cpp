@@ -6,10 +6,9 @@
 #include <set>
 #include <vector>
 
-#include "./vrp_assert.h"
-#include "./GraphElements.h"
-#include "./Graph.h"
-#include "./DijkstraShortestPathAlg.h"
+#include "./../../ksp/src/vrp_assert.h"
+#include "./../../ksp/src/Graph.h"
+#include "./KruskalMinSpanningTree.h"
 
 using namespace boost;
 struct Vertex {
@@ -23,13 +22,13 @@ struct Vertex {
 \param[in] sink: original id of the sink
 \Returns BasePath
 */
-std::deque<BaseEdge> DijkstraShortestPathAlg::Dijkstra(long source, long sink) {
+std::deque<BaseEdge> KruskalMinSpanningTree::Kruskal(long source, long sink) {
         std::deque<BaseEdge> emptyPath;
         if (source != sink) {
              BaseVertex* sourcePt = find_vertex(source);
              BaseVertex* sinkPt = find_vertex(sink);
              if ((sourcePt == NULL) || (sinkPt == NULL)) return emptyPath;
-             return boostDijkstra(sourcePt->ID(), sinkPt->ID()).Path();
+             return boostKruskal(sourcePt->ID(), sinkPt->ID()).Path();
         }
         return emptyPath;
 }
@@ -41,14 +40,14 @@ std::deque<BaseEdge> DijkstraShortestPathAlg::Dijkstra(long source, long sink) {
 (the truth value is ignored)
 \Returns BasePath
 */
-BasePath DijkstraShortestPathAlg::Dijkstra(UINT source, UINT sink) {
+BasePath KruskalMinSpanningTree::Kruskal(UINT source, UINT sink) {
     if ( source < m_Vertices.size() && sink < m_Vertices.size() &&  source != sink)
-         return boostDijkstra(source, sink);
+         return boostKruskal(source, sink);
     return BasePath();
 }
 
 // TODO(vicky) brake this huge function into little more esay to undertand functions
-BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
+BasePath KruskalMinSpanningTree::boostKruskal(UINT source_id, UINT sink_id) {
     assert(m_BestEdgesPt.size());
     BasePath path;
     path.clear();
@@ -138,7 +137,7 @@ if the removed edge is a minimal, then its the only one removed
 otherwise from all the parallel edges, the minimal is searched and removed
 /param[in] edgePt: pointer to the edge to be removed
 */
-void DijkstraShortestPathAlg::removeEdgeAndParallels(BaseEdge *edgePt) {
+void KruskalMinSpanningTree::removeEdgeAndParallels(BaseEdge *edgePt) {
     if (edgePt->isMain() && edgePt->isActive()) {
         edgePt->remove();
         removedEdges.push_back(edgePt);
@@ -168,7 +167,7 @@ void DijkstraShortestPathAlg::removeEdgeAndParallels(BaseEdge *edgePt) {
     }
 }
 
-void DijkstraShortestPathAlg::restoreEdges() {
+void KruskalMinSpanningTree::restoreEdges() {
     while (removedEdges.size()) {
         removedEdges.front()->restore();
         m_BestEdgesPt.insert(removedEdges.front());
@@ -183,7 +182,7 @@ An edge to be active, the follwoing conditions must be met:
   - the end vertex must be active
 /param[in] edgePt: pointer to the tested edge
 */
-bool DijkstraShortestPathAlg::isActive(const BaseEdge *edgePt) const {
+bool KruskalMinSpanningTree::isActive(const BaseEdge *edgePt) const {
     return edgePt->isActive()
         && m_Vertices[edgePt->getStart()].isActive()
         && m_Vertices[edgePt->getEnd()].isActive();
@@ -198,7 +197,7 @@ When "edgePt" is a pointer to an  incomming or outgoing edge the following
 
 /param[in] path: the path containg the vertices to be removed
 */
-void  DijkstraShortestPathAlg::removeVertices(const BasePath &path) {
+void  KruskalMinSpanningTree::removeVertices(const BasePath &path) {
     if (path.size() == 0) return;
     BasePath::eDequeIt eIt;
     for (eIt =  path.path().begin(); eIt !=  path.path().end(); ++eIt) {
@@ -209,7 +208,7 @@ void  DijkstraShortestPathAlg::removeVertices(const BasePath &path) {
 /*!
 /param[in] path: the path containg the vertices to be restored
 */
-void  DijkstraShortestPathAlg::restoreVertices(const BasePath &path) {
+void  KruskalMinSpanningTree::restoreVertices(const BasePath &path) {
     if (path.size() == 0) return;
     BasePath::eDequeIt eIt;
     for (eIt =  path.path().begin(); eIt !=  path.path().end(); ++eIt) {
@@ -227,7 +226,7 @@ Restores the graph for a next iteration so it has:
   - all the vertices are logically inserted
   - all the edges are logically inserted
 */
-void DijkstraShortestPathAlg::clear() {
+void KruskalMinSpanningTree::clear() {
      vListIt vIt;
      for (vIt =  m_Vertices.begin(); vIt !=  m_Vertices.end(); ++vIt)
           (*vIt).restore();

@@ -28,10 +28,10 @@
 #include "access/htup_details.h"
 #endif
 
-#include "ksp.h" 
-#include "postgres_types.h" 
-#include "postgres_connection.h" 
-#include "KSPDriver.h"
+#include "./../../ksp/src/postgres_types.h" 
+#include "./../../ksp/src/postgres_connection.h" 
+#include "./kruskal.h" 
+#include "./kruskalDriver.h"
 
 #ifndef _MSC_VER
 Datum kshortest_path(PG_FUNCTION_ARGS);

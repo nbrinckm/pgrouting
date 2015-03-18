@@ -1,12 +1,12 @@
-#ifndef SRC_KSP_SRC_DIJKSTRASHORTESTPATHALG_H_
-#define SRC_KSP_SRC_DIJKSTRASHORTESTPATHALG_H_
+#ifndef SRC_KKRUSKAL_SRC_KRUSKALMINSPANNINGTREEP_H_
+#define SRC_KKRUSKAL_SRC_KRUSKALMINSPANNINGTREEP_H_
 
 #include <set>
 #include <deque>
 #include "Graph.h"
 
 /**************************************************************************/
-//! DijkstraShortestPathAlg: public Graph edge oriented implementation
+//! KruskalMinSpanningTree: public Graph edge oriented implementation
 /*!
 \author Vicky Vergara
 \date Feb/2015
@@ -14,7 +14,7 @@
 \details  Class to store an edge of a graph.
 \sa Graph 
 ********************************************************************** */
-class DijkstraShortestPathAlg: public Graph {
+class KruskalMinSpanningTree: public Graph {
  public:
        /** @name Dijkstra execution
        \Returns empty path: when:
@@ -34,11 +34,11 @@ class DijkstraShortestPathAlg: public Graph {
        ///@{
 
        //! Dijkstra using the original ids
-       std::deque<BaseEdge> Dijkstra(long source, long sink);
+       std::deque<BaseEdge> Kruskal(long source, long sink);
        //! Dijkstra using the graph's IDs
-       BasePath Dijkstra(UINT source, UINT sink);
+       BasePath Kruskal(UINT source, UINT sink);
        ///@}
-       explicit DijkstraShortestPathAlg(const Graph &graph)
+       explicit KruskalMinSpanningTree(const Graph &graph)
         :Graph(graph) {}
        
 
@@ -46,7 +46,7 @@ class DijkstraShortestPathAlg: public Graph {
     /** @name Routines used in the algorithm*/
     ///@{
 
-    BasePath boostDijkstra(UINT source_id, UINT sink_id);
+    BasePath boostKruskal(UINT source_id, UINT sink_id);
 
     ///@}
     /** @name Routines to modify the graph*/
@@ -75,4 +75,4 @@ class DijkstraShortestPathAlg: public Graph {
     */
 };
 
-#endif  // SRC_KSP_SRC_DIJKSTRASHORTESTPATHALG_H_
+#endif  // SRC_KKRUSKAL_SRC_KRUSKALMINSPANNINGTREEP_H_

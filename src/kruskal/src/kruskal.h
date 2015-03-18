@@ -19,15 +19,15 @@
  *
  */
  
-#ifndef _KSP_H
-#define _KSP_H
+#ifndef _KRUSKAL_H
+#define _KRUSKAL_H
 
 #define TUPLIMIT 1000
 #define PATH_ALLOC_TOTAL 5
 
 #include "postgres.h"
-#include "./postgres_types.h"
-#include "./postgres_connection.h"
+#include "./../../ksp/src/postgres_types.h"
+#include "./../../ksp/src/postgres_connection.h"
 
 #undef DEBUG
 //#define DEBUG
@@ -47,4 +47,4 @@ int compute_kshortest_path(char* sql, int64_t start_vertex,
 }
 #endif
 
-#endif // _KSP_H
+#endif // _KRUSKAL_H

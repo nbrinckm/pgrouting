@@ -1,20 +1,21 @@
-#ifndef SRC_KSP_SRC_KSPGRAPH_H_
-#define SRC_KSP_SRC_KSPGRAPH_H_
+#ifndef SRC_KRUSKAL_SRC_KRUSKALGRAPH_H_
+#define SRC_KRUSKAL_SRC_KRUSKALGRAPH_H_
 
 #include <string>
-#include "GraphElements.h"
-#include "Graph.h"
+
 
 extern "C" {
-#include "ksp.h"
+#include "./../../ksp/src/postgres_types.h"
 }
 
-class KSPGraph : public Graph {
+#include "Graph.h"
+
+class KruskalGraph : public Graph {
  public:
-    ~KSPGraph();
-    explicit KSPGraph(const Graph&);
-    KSPGraph();
-    explicit KSPGraph(const std::string &);
+    ~KruskalGraph();
+    explicit KruskalGraph(const Graph&);
+    KruskalGraph();
+    explicit KruskalGraph(const std::string &);
     void AddData(pgr_edge_t *edges,  UINT total_tuples, bool has_reverse_cost);
     void insertTuple(long edgeId, long source, long target,
                      float cost, float reverse_cost, bool has_reverse_cost);
@@ -23,4 +24,4 @@ class KSPGraph : public Graph {
     void EndLoad();
     void clear();
 };
-#endif  // SRC_KSP_SRC_KSPGRAPH_H_
+#endif  // SRC_KRUSKA_SRC_KRUSKALGRAPH_H_
