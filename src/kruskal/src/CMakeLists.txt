@@ -11,9 +11,9 @@ else(APPLE)
     set(LIBRARY_MODE_TARGET "SHARED")
 endif(APPLE)
 
-set(pgr_kruskal_SRCS kruskalMinSpanningTree.cpp kruskalMinSpanningTree.h \
-                      kruskal.c kruskal.h \
-                      kruskalDriver.cpp kruskalGraph.h \
+set(pgr_kruskal_SRCS kruskalMinSpanningTree.cpp kruskalMinSpanningTree.h 
+                      kruskal.c kruskal.h 
+                      kruskalDriver.cpp kruskalGraph.h 
                       kruskalGraph.cpp kruskalGraph.cpp)
 
 add_library(pgr_kruskal ${LIBRARY_MODE_TARGET} ${pgr_kruskal_SRCS})

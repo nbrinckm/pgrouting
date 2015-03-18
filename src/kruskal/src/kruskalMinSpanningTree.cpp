@@ -7,8 +7,9 @@
 #include <vector>
 
 #include "./../../ksp/src/vrp_assert.h"
+#include "./../../ksp/src/GraphElements.h"
 #include "./../../ksp/src/Graph.h"
-#include "./KruskalMinSpanningTree.h"
+#include "./kruskalMinSpanningTree.h"
 
 using namespace boost;
 struct Vertex {
@@ -22,13 +23,13 @@ struct Vertex {
 \param[in] sink: original id of the sink
 \Returns BasePath
 */
-std::deque<BaseEdge> KruskalMinSpanningTree::Kruskal(long source, long sink) {
-        std::deque<BaseEdge> emptyPath;
+BasePath KruskalMinSpanningTree::Kruskal(long source, long sink, bool originalId) {
+        BasePath emptyPath;
         if (source != sink) {
              BaseVertex* sourcePt = find_vertex(source);
              BaseVertex* sinkPt = find_vertex(sink);
              if ((sourcePt == NULL) || (sinkPt == NULL)) return emptyPath;
-             return boostKruskal(sourcePt->ID(), sinkPt->ID()).Path();
+             return boostKruskal(sourcePt->ID(), sinkPt->ID());
         }
         return emptyPath;
 }

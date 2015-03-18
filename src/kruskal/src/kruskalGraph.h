@@ -8,7 +8,7 @@ extern "C" {
 #include "./../../ksp/src/postgres_types.h"
 }
 
-#include "Graph.h"
+#include "./../../ksp/src/Graph.h"
 
 class KruskalGraph : public Graph {
  public:

@@ -3,7 +3,7 @@
 
 #include <set>
 #include <deque>
-#include "Graph.h"
+#include "./../../ksp/src/Graph.h"
 
 /**************************************************************************/
 //! KruskalMinSpanningTree: public Graph edge oriented implementation
@@ -34,7 +34,7 @@ class KruskalMinSpanningTree: public Graph {
        ///@{
 
        //! Dijkstra using the original ids
-       std::deque<BaseEdge> Kruskal(long source, long sink);
+       BasePath Kruskal(long source, long sink, bool originalId);
        //! Dijkstra using the graph's IDs
        BasePath Kruskal(UINT source, UINT sink);
        ///@}

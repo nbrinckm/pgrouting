@@ -22,6 +22,8 @@
 #ifndef _POSTGRES_TYPES_H
 #define _POSTGRES_TYPES_H
 
+#include "postgres.h"
+
 #define TUPLIMIT 1000
 
 #ifdef __cplusplus
