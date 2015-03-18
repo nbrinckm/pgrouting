@@ -19,32 +19,40 @@
  *
  */
  
-#ifndef _KSP_H
-#define _KSP_H
+#ifndef _POSTGRES_TYPES_H
+#define _POSTGRES_TYPES_H
 
 #define TUPLIMIT 1000
-#define PATH_ALLOC_TOTAL 5
-
-#include "postgres.h"
-#include "./postgres_types.h"
-#include "./postgres_connection.h"
-
-#undef DEBUG
-//#define DEBUG
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 
-int compute_kshortest_path(char* sql, int64_t start_vertex, 
-                                 int64_t end_vertex, int no_paths, 
-                                 bool has_reverse_cost, 
-                                 pgr_path_element3_t **path, int *ksp_path_count) ;
+typedef struct {
+    int64_t id;
+    int64_t source;
+    int64_t target;
+    float8 cost;
+    float8 reverse_cost;
+} pgr_edge_t;
+
+typedef struct {
+    int route_id;
+    int64_t vertex_id;
+    int64_t edge_id;
+    float8 cost;
+} pgr_path_element3_t;
+
+typedef struct {
+    int64_t vertex_id;
+    int64_t edge_id;
+    float8 cost;
+} pgr_path_element_t;
+
 
 #ifdef __cplusplus
-
 }
 #endif
 
-#endif // _KSP_H
+#endif  // _POSTGRES_TYPES_H

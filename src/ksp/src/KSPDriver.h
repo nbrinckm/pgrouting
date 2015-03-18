@@ -3,15 +3,18 @@
 
 #include <stdarg.h>
 #include <stdio.h>
+#include "postgres.h"
+
+#include "./postgres_types.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-int  doKpaths(ksp_edge_t  * edges, long total_tuples,
+int  doKpaths(pgr_edge_t  * edges, long total_tuples,
                       long  start_vertex, long end_vertex,
                       int no_paths, bool has_reverse_cost,
-                      ksp_path_element_t **ksp_path, int *path_count,
+                      pgr_path_element3_t **ksp_path, int *path_count,
                       char ** err_msg);
 
 #ifdef __cplusplus

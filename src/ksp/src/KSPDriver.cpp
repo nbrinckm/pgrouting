@@ -1,24 +1,26 @@
 #include <deque>
 #include <sstream>
 
+#include "./KSPDriver.h"
+#include "./postgres_connection.h"
 #include "./signalhandler.h"
-#include "KSPGraph.h"
-#include "YenTopKShortestPathsAlg.h"
+#include "./KSPGraph.h"
+#include "./YenTopKShortestPathsAlg.h"
 extern "C" {
-#include "ksp.h"
+#include "./postgres_types.h"
+#include "./ksp.h"
 }
 
-#include "KSPDriver.h"
 static  void dpPrint(const KSPGraph &theGraph,
                      const BasePath &thePath,
-                     ksp_path_element_t *path,
+                     pgr_path_element3_t *path,
                      int &sequence, int route_id);
-static  ksp_path_element_t * noPathFound(long start_id);
+static  pgr_path_element3_t * noPathFound(long start_id);
 
-int  doKpaths(ksp_edge_t  * edges, long total_tuples,
+int  doKpaths(pgr_edge_t  * edges, long total_tuples,
                        long  start_vertex, long  end_vertex,
                        int no_paths, bool has_reverse_cost,
-                       ksp_path_element_t **path, int *path_count,
+                       pgr_path_element3_t **path, int *path_count,
                        char ** err_msg) {
    try {
         REG_SIGINT
@@ -107,9 +109,9 @@ int  doKpaths(ksp_edge_t  * edges, long total_tuples,
 return 0;
 #endif
         // get the space required to store all the paths
-        ksp_path_element_t *ksp_path;
+        pgr_path_element3_t *ksp_path;
         ksp_path = 0;
-        ksp_path = get_ksp_memory(count, ksp_path);
+        ksp_path = pgr_get_memory3(count, ksp_path);
 
         int sequence = 0;
         for (unsigned int route_id = 0; route_id < paths.size(); route_id++) {
@@ -139,7 +141,7 @@ return 0;
 
 static  void dpPrint(const KSPGraph &theGraph,
                      const BasePath &thePath,
-                     ksp_path_element_t *path,
+                     pgr_path_element3_t *path,
                      int &sequence, int route_id) {
         // the row data:  seq, route, nodeid, edgeId, cost
         long nodeId, edgeId, lastNodeId;
@@ -167,9 +169,9 @@ static  void dpPrint(const KSPGraph &theGraph,
         }
 }
 
-static  ksp_path_element_t * noPathFound(long start_id) {
-        ksp_path_element_t *no_path;
-        no_path = get_ksp_memory(1, no_path);
+static  pgr_path_element3_t* noPathFound(long start_id) {
+        pgr_path_element3_t *no_path;
+        no_path = pgr_get_memory3(1, no_path);
         no_path[0].route_id  = 0;
         no_path[0].vertex_id = start_id;
         no_path[0].cost = 0;

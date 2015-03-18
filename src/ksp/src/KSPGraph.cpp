@@ -12,7 +12,7 @@ void KSPGraph::StartLoad() { clear();}
 void KSPGraph::EndLoad(void) {}
 void KSPGraph::clear(void) { Graph::clear();}
 
-void KSPGraph::AddData(ksp_edge_t  * edges,  UINT total_tuples, bool has_reverse_cost) {
+void KSPGraph::AddData(pgr_edge_t  *edges,  UINT total_tuples, bool has_reverse_cost) {
        for (UINT i = 0; i < total_tuples; i++) {
             insertTuple(edges[i].id, edges[i].source, edges[i].target,
             edges[i].cost, edges[i].reverse_cost, has_reverse_cost);
