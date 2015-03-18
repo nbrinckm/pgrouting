@@ -6,9 +6,9 @@
 #include <set>
 #include <vector>
 
-#include "./vrp_assert.h"
-#include "./GraphElements.h"
-#include "./Graph.h"
+#include "./../../common/src/vrp_assert.h"
+#include "./../../common/src/GraphElements.h"
+#include "./../../common/src/Graph.h"
 #include "./DijkstraShortestPathAlg.h"
 
 using namespace boost;

@@ -28,9 +28,9 @@
 #include "access/htup_details.h"
 #endif
 
-#include "ksp.h" 
-#include "postgres_types.h" 
-#include "postgres_connection.h" 
+#include "./ksp.h" 
+#include "./../../common/src/postgres_types.h" 
+#include "./../../common/src/postgres_connection.h" 
 #include "KSPDriver.h"
 
 #ifndef _MSC_VER

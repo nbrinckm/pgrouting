@@ -3,7 +3,7 @@
 
 #include <deque>
 #include <set>
-#include "DijkstraShortestPathAlg.h"
+#include "./DijkstraShortestPathAlg.h"
 
 class YenTopKShortestPathsAlg: public DijkstraShortestPathAlg {
  public:

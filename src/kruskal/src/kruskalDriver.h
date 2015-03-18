@@ -5,12 +5,11 @@
 #include <stdio.h>
 #include "postgres.h"
 
+#include "./../../common/src/postgres_types.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include "./../../ksp/src/postgres_types.h"
 
 int  doKpaths(pgr_edge_t  * edges, long total_tuples,
                       long  start_vertex, long end_vertex,

@@ -3,7 +3,7 @@
 
 #include <set>
 #include <deque>
-#include "Graph.h"
+#include "./../../common/src/Graph.h"
 
 /**************************************************************************/
 //! DijkstraShortestPathAlg: public Graph edge oriented implementation

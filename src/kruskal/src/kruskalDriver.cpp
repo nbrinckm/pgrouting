@@ -1,18 +1,17 @@
 #include <deque>
 #include <sstream>
-
 extern "C" {
-#include "./../../ksp/src/postgres_types.h"
+#include "./../../common/src/postgres_types.h"
 #include "./kruskal.h"
 }
 
-#include "./../../ksp/src/postgres_connection.h"
-#include "./../../ksp/src/signalhandler.h"
-#include "./kruskalGraph.h"
+#include "./../../common/src/postgres_connection.h"
+#include "./../../common/src/signalhandler.h"
+#include "./insertionGraph.h"
+#include "./YenTopKShortestPathsAlg.h"
 #include "./kruskalDriver.h"
-#include "./kruskalMinSpanningTree.h"
 
-static  void dpPrint(const KruskalGraph &theGraph,
+static  void dpPrint(const KSPGraph &theGraph,
                      const BasePath &thePath,
                      pgr_path_element3_t *path,
                      int &sequence, int route_id);
@@ -25,7 +24,7 @@ int  doKpaths(pgr_edge_t  * edges, long total_tuples,
                        char ** err_msg) {
    try {
         REG_SIGINT
-        KruskalGraph theGraph = KruskalGraph();
+        KSPGraph theGraph = KSPGraph();
         std::ostringstream log;
 
         log << "NOTICE: Step 0: Loading the graph\n";
@@ -62,12 +61,12 @@ int  doKpaths(pgr_edge_t  * edges, long total_tuples,
         log << "NOTICE: Step 2: Starting Yen graph \n";
 
 	THROW_ON_SIGINT
-        KruskalMinSpanningTree kruskalGraph(theGraph);
+        YenTopKShortestPathsAlg yenGraph(theGraph);
 	THROW_ON_SIGINT
 
         log << "NOTICE: Step 3: Getting the paths \n";
-        BasePath paths;
-        paths = kruskalGraph.Kruskal(start_vertex, end_vertex, true);
+        std::deque<BasePath> paths;
+        paths = yenGraph.Yen(start_vertex, end_vertex, no_paths);
 	THROW_ON_SIGINT
 
         if (paths.size() == 0) {
@@ -83,7 +82,23 @@ int  doKpaths(pgr_edge_t  * edges, long total_tuples,
         log << "NOTICE: Step 4: Calculating the number of tuples \n";
         int count = 0;
         int seq = 0;
-        count += paths.size() + 1;   // add final vertex
+        for (unsigned int i = 0; i < paths.size(); ++i ) {
+	   THROW_ON_SIGINT
+           if (paths[i].size() > 0)  // don't count empty routes
+              count += paths[i].size() + 1;   // add final vertex
+#if 0
+           for (unsigned int j = 0; j < paths[i].size(); ++j ) {
+             log << seq << "\t" <<   paths[i][j].getStart() << "\toriginal" << yenGraph.getVertexOriginalID(paths[i][j].getStart()) 
+                 << "\t" << paths[i][j].getOriginalID() 
+                 << "\t" <<  paths[i][j].Weight() << "\n";
+ 
+             seq ++;
+           }
+           log << seq << "\t" <<  paths[i][ paths[i].size()-1 ].getEnd() << "\toriginal" << yenGraph.getVertexOriginalID(paths[i][ paths[i].size()-1 ].getEnd())
+               << "\t0\t -1\n";
+           seq++;
+#endif
+        }
         log << "NOTICE Count: " << count << "\n";
 #if 0
 // move around this lines to force a return with an empty path and the logging messages
@@ -94,12 +109,15 @@ int  doKpaths(pgr_edge_t  * edges, long total_tuples,
 return 0;
 #endif
         // get the space required to store all the paths
-        pgr_path_element3_t *kruskel_path;
-        kruskel_path = 0;
-        kruskel_path = pgr_get_memory3(count, kruskel_path);
+        pgr_path_element3_t *ksp_path;
+        ksp_path = 0;
+        ksp_path = pgr_get_memory3(count, ksp_path);
 
         int sequence = 0;
-        dpPrint(theGraph, paths, kruskel_path, sequence, 0);
+        for (unsigned int route_id = 0; route_id < paths.size(); route_id++) {
+          if (paths[route_id].size() > 0)
+               dpPrint(theGraph, paths[route_id], ksp_path, sequence, route_id);
+        }
 
         log << "NOTICE Sequence: " << sequence << "\n";
         if (count != sequence) {
@@ -112,7 +130,7 @@ return 0;
         #else
         *err_msg = strdup( log.str().c_str());
         #endif
-        *path = kruskel_path;
+        *path = ksp_path;
         *path_count = count;
         return EXIT_SUCCESS;
    } catch ( ... ) {
@@ -121,7 +139,7 @@ return 0;
    }
 }
 
-static  void dpPrint(const KruskalGraph &theGraph,
+static  void dpPrint(const KSPGraph &theGraph,
                      const BasePath &thePath,
                      pgr_path_element3_t *path,
                      int &sequence, int route_id) {

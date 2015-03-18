@@ -26,8 +26,8 @@
 #define PATH_ALLOC_TOTAL 5
 
 #include "postgres.h"
-#include "./postgres_types.h"
-#include "./postgres_connection.h"
+#include "./../../common/src/postgres_types.h"
+#include "./../../common/src/postgres_connection.h"
 
 #undef DEBUG
 //#define DEBUG

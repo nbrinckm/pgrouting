@@ -1,15 +1,15 @@
 #include <deque>
 #include <sstream>
-
-#include "./KSPDriver.h"
-#include "./postgres_connection.h"
-#include "./signalhandler.h"
-#include "./KSPGraph.h"
-#include "./YenTopKShortestPathsAlg.h"
 extern "C" {
-#include "./postgres_types.h"
+#include "./../../common/src/postgres_types.h"
 #include "./ksp.h"
 }
+
+#include "./../../common/src/postgres_connection.h"
+#include "./../../common/src/signalhandler.h"
+#include "./insertionGraph.h"
+#include "./YenTopKShortestPathsAlg.h"
+#include "./KSPDriver.h"
 
 static  void dpPrint(const KSPGraph &theGraph,
                      const BasePath &thePath,

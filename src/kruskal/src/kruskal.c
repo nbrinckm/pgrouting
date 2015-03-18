@@ -28,9 +28,9 @@
 #include "access/htup_details.h"
 #endif
 
-#include "./../../ksp/src/postgres_types.h" 
-#include "./../../ksp/src/postgres_connection.h" 
 #include "./kruskal.h" 
+#include "./../../common/src/postgres_types.h" 
+#include "./../../common/src/postgres_connection.h" 
 #include "./kruskalDriver.h"
 
 #ifndef _MSC_VER

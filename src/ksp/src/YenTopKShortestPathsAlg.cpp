@@ -1,8 +1,8 @@
 #include <deque>
 #include <algorithm>
-#include "./signalhandler.h"
-#include "./vrp_assert.h"
-#include "./GraphElements.h"
+#include "./../../common/src/signalhandler.h"
+#include "./../../common/src/vrp_assert.h"
+#include "./../../common/src/GraphElements.h"
 #include "./DijkstraShortestPathAlg.h"
 #include "./YenTopKShortestPathsAlg.h"
 
