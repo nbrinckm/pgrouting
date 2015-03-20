@@ -12,7 +12,7 @@ else(APPLE)
 endif(APPLE)
 
 set(routing_ksp_SRCS 
-                     ./../../kruskal/src/DijkstraShortestPathAlg.cpp ./../../kruskal/src/DijkstraShortestPathAlg.h
+                     ./../../dijkstra/src/DijkstraShortestPathAlg.cpp ./../../dijkstra/src/DijkstraShortestPathAlg.h
                      YenTopKShortestPathsAlg.cpp YenTopKShortestPathsAlg.h
                      ksp.c ksp.h
                      KSPDriver.cpp
