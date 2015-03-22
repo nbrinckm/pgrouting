@@ -78,7 +78,7 @@ CREATE OR REPLACE FUNCTION _pgr_4parameter_check(sql text)
   COST 1;
 
 
--- must be called after other one
+-- if the query can not be executed returns false
 CREATE OR REPLACE FUNCTION _pgr_reverse_cost_check(sql text)
   RETURNS bool AS
   $BODY$
