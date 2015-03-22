@@ -20,10 +20,10 @@ int  doKpaths(ksp_edge_t  * edges, long total_tuples,
                        int no_paths, bool has_reverse_cost,
                        ksp_path_element_t **path, int *path_count,
                        char ** err_msg) {
+   std::ostringstream log;
    try {
         REG_SIGINT
         KSPGraph theGraph = KSPGraph();
-        std::ostringstream log;
 
         log << "NOTICE: Step 0: Loading the graph\n";
         theGraph.StartLoad();
@@ -132,7 +132,8 @@ return 0;
         *path_count = count;
         return EXIT_SUCCESS;
    } catch ( ... ) {
-     *err_msg = strdup( "Caught unknown expection!" );
+     log < "*** Caught unknown expection! *****";
+     *err_msg = strdup( log.str().c_str());
      return -1;
    }
 }
