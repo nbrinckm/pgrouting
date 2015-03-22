@@ -26,11 +26,8 @@ t
  ERROR:  Support for id only of type: integer
  ERROR:  Support for source only of type: integer
  ERROR:  Support for source only of type: integer
- ERROR:  Support for source only of type: integer
  ERROR:  Support for target only of type: integer
  ERROR:  Support for target only of type: integer
- ERROR:  Support for target only of type: integer
- ERROR:  Support for Cost: double precision
  ERROR:  Support for Cost: double precision
  ERROR:  Support for Cost: double precision
  ERROR:  Support for Cost: double precision
@@ -42,16 +39,15 @@ Any version TEST rejects bad input unterminated quoted string
  ERROR:  Support for id only of type: integer
  ERROR:  Support for source only of type: integer
  ERROR:  Support for target only of type: integer
- ERROR:  An expected column was not found in the query
-HINT:  Please veryfy the column names: id, source, target, cost
- ERROR:  An expected column was not found in the query
-HINT:  Please veryfy the column names: id, source, target, cost
- ERROR:  An expected column was not found in the query
-HINT:  Please veryfy the column names: id, source, target, cost
- ERROR:  An expected column was not found in the query
-HINT:  Please veryfy the column names: id, source, target, cost
+ ERROR:  Support for id only of type: integer
+ ERROR:  Support for id only of type: integer
+ ERROR:  Support for id only of type: integer
+ ERROR:  Support for id only of type: integer
  ERROR:  Support for Cost: double precision
  ERROR:  Support for Cost: double precision
+ ERROR:  Support for Cost: double precision
+ ERROR:  Support for source only of type: integer
+ ERROR:  Support for target only of type: integer
  ERROR:  Support for Cost: double precision
 -----------------------------------------
 -----------------------------------------

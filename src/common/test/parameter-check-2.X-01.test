@@ -34,15 +34,12 @@ select _pgr_4parameter_check('select id::real, source, target, cost, reverse_cos
 
 select _pgr_4parameter_check('select id, source::bigint, target, cost, reverse_cost from edge_table');
 select _pgr_4parameter_check('select id, source::smallint, target, cost, reverse_cost from edge_table');
-select _pgr_4parameter_check('select id, source::real, target, cost, reverse_cost from edge_table');
 
 select _pgr_4parameter_check('select id, target::bigint, source, cost, reverse_cost from edge_table');
 select _pgr_4parameter_check('select id, target::smallint, source, cost, reverse_cost from edge_table');
-select _pgr_4parameter_check('select id, target::real, source, cost, reverse_cost from edge_table');
 
 select _pgr_4parameter_check('select id, cost::bigint, source, target, reverse_cost from edge_table');
 select _pgr_4parameter_check('select id, cost::smallint, source, target, reverse_cost from edge_table');
-select _pgr_4parameter_check('select id, cost::real, source, target, reverse_cost from edge_table');
 
 select _pgr_4parameter_check('select id, source, target, -1 as cost from edge_table');
 select _pgr_4parameter_check('select id, source, target, -1.0 as cost from edge_table');
@@ -54,13 +51,16 @@ select _pgr_4parameter_check('select id, source, target, -1.0 as cost from edge_
 select _pgr_4parameter_check('select 1.0 as id, 2.0 as source, 3.0 as target, cost, reverse_cost from edge_table');
 select _pgr_4parameter_check('select 1 as id, 2.0 as source, 3.0 as target, cost, reverse_cost from edge_table');
 select _pgr_4parameter_check('select 1 as id, 2 as source, 3.0 as target, cost, reverse_cost from edge_table');
-select _pgr_4parameter_check('select id::char, source, target, id, reverse_cost from edge_table');
-select _pgr_4parameter_check('select id::varchar, source, target, id, reverse_cost from edge_table');
-select _pgr_4parameter_check('select id::text, source, target, id, reverse_cost from edge_table');
-select _pgr_4parameter_check('select id::numeric, source, target, id, reverse_cost from edge_table');
+select _pgr_4parameter_check('select id::char as id, source, target, cost, reverse_cost from edge_table');
+select _pgr_4parameter_check('select id::varchar as id, source, target, cost, reverse_cost from edge_table');
+select _pgr_4parameter_check('select id::text as id, source, target, cost, reverse_cost from edge_table');
+select _pgr_4parameter_check('select id::numeric as id, source, target, cost, reverse_cost from edge_table');
 select _pgr_4parameter_check('select cost::char, source, target, id, reverse_cost from edge_table');
 select _pgr_4parameter_check('select cost::varchar, source, target, id, reverse_cost from edge_table');
 select _pgr_4parameter_check('select cost::text, source, target, id, reverse_cost from edge_table');
+select _pgr_4parameter_check('select id, source::real, target, cost, reverse_cost from edge_table');
+select _pgr_4parameter_check('select id, target::real, source, cost, reverse_cost from edge_table');
+select _pgr_4parameter_check('select id, cost::real, source, target, reverse_cost from edge_table');
 
 
 
