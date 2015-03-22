@@ -34,4 +34,7 @@ sed s/psql:routweb-any-01.test:[0-9]*:// <routweb-any-01.aaa >routweb-any-01.res
 psql  -U postgres -h localhost -A -t -q -f topoweb-any-01.test pgr_test &> topoweb-any-01.aaa
 sed s/psql:topoweb-any-01.test:[0-9]*:// <topoweb-any-01.aaa >topoweb-any-01.rest
 
+psql  -U postgres -h localhost -A -t -q -f parameter-check-2.X-01.test doc_data &> parameter-check-2.X-01.aaa
+sed s/psql:parameter-check-2.X-01.test:[0-9]*:// <parameter-check-2.X-01.aaa >parameter-check-2.X-01.rest
+
 rm *.aaa

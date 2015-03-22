@@ -1,0 +1,77 @@
+-----------------------------------------
+2.X TESTS return true for valid inputs types for:  _pgr_4parameter_check
+-----------------------------------------
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+-----------------------------------------
+2.X TEST rejects bad input but 3.X accepts:  _pgr_4parameter_check
+-----------------------------------------
+ ERROR:  Support for id only of type: integer
+ ERROR:  Support for id only of type: integer
+ ERROR:  Support for id only of type: integer
+ ERROR:  Support for source only of type: integer
+ ERROR:  Support for source only of type: integer
+ ERROR:  Support for source only of type: integer
+ ERROR:  Support for target only of type: integer
+ ERROR:  Support for target only of type: integer
+ ERROR:  Support for target only of type: integer
+ ERROR:  Support for Cost: double precision
+ ERROR:  Support for Cost: double precision
+ ERROR:  Support for Cost: double precision
+ ERROR:  Support for Cost: double precision
+ ERROR:  Support for Cost: double precision
+-----------------------------------------
+Any version TEST rejects bad input unterminated quoted string
+
+-----------------------------------------
+ ERROR:  Support for id only of type: integer
+ ERROR:  Support for source only of type: integer
+ ERROR:  Support for target only of type: integer
+ ERROR:  An expected column was not found in the query
+HINT:  Please veryfy the column names: id, source, target, cost
+ ERROR:  An expected column was not found in the query
+HINT:  Please veryfy the column names: id, source, target, cost
+ ERROR:  An expected column was not found in the query
+HINT:  Please veryfy the column names: id, source, target, cost
+ ERROR:  An expected column was not found in the query
+HINT:  Please veryfy the column names: id, source, target, cost
+ ERROR:  Support for Cost: double precision
+ ERROR:  Support for Cost: double precision
+ ERROR:  Support for Cost: double precision
+-----------------------------------------
+-----------------------------------------
+-----------------------------------------
+2.X TESTS return true for valid inputs types for: _pgr_reverse_cost_check
+-----------------------------------------
+t
+t
+t
+t
+-----------------------------------------
+2.X TEST rejects bad input but 3.X accepts: _pgr_reverse_cost_check
+-----------------------------------------
+ ERROR:  Reverse_cost is not double precision
+ ERROR:  Reverse_cost is not double precision
+ ERROR:  Reverse_cost is not double precision
+ ERROR:  Reverse_cost is not double precision
+ ERROR:  Reverse_cost is not double precision
+-----------------------------------------
+Any version TEST rejects bad input: _pgr_reverse_cost_check
+-----------------------------------------
+ ERROR:  Reverse_cost is not double precision
+ ERROR:  Reverse_cost is not double precision
