@@ -57,17 +57,14 @@ CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) l
 CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
  ERROR:  Support for target only of type: integer
 CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
- ERROR:  An expected column was not found in the query
-HINT:  Please veryfy the column names: id, source, target, cost
+ ERROR:  Support for Cost: double precision
 CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
- ERROR:  An expected column was not found in the query
-HINT:  Please veryfy the column names: id, source, target, cost
+ ERROR:  Could not excecute query please verify sintax of: 
+HINT:  select id::varchar as cost source, target, id, reverse_cost from edge_table
 CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
- ERROR:  An expected column was not found in the query
-HINT:  Please veryfy the column names: id, source, target, cost
+ ERROR:  Support for Cost: double precision
 CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
- ERROR:  An expected column was not found in the query
-HINT:  Please veryfy the column names: id, source, target, cost
+ ERROR:  Support for Cost: double precision
 CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
  ERROR:  Support for Cost: double precision
 CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
@@ -77,5 +74,6 @@ CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) l
 CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
  ERROR:  Support for target only of type: integer
 CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
- ERROR:  Support for source only of type: integer
+ ERROR:  An expected column was not found in the query
+HINT:  Please veryfy the column names: id, source, target, cost
 CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
