@@ -50,7 +50,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id integer,
       if pgr_versionless((pgr_version()).version, '3.0') then -- 2.x
 
              if (has_reverse != flag)  then -- flag represents has_reverse_cost
-                 if (has_reverse) then raise EXCEPTION 'has_reverse_cost set to false but reverse_cost column found';
+                 if (has_reverse) then raise NOTICE 'has_reverse_cost set to false but reverse_cost column found.... IGNORING';
                  else raise EXCEPTION 'has_reverse_cost set to true but reverse_cost not found';
                  end if;
              end if;

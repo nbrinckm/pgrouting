@@ -1,0 +1,85 @@
+-----------------------------------------
+2.X TESTS return true for valid inputs types for:  pgr_dijkstra
+-----------------------------------------
+ NOTICE:  has_reverse_cost set to false but reverse_cost column found.... IGNORING
+6
+ NOTICE:  has_reverse_cost set to false but reverse_cost column found.... IGNORING
+6
+ NOTICE:  has_reverse_cost set to false but reverse_cost column found.... IGNORING
+6
+ NOTICE:  has_reverse_cost set to false but reverse_cost column found.... IGNORING
+4
+4
+4
+2
+2
+2
+2
+0
+0
+-----------------------------------------
+2.X TEST rejects bad input but 3.X accepts:  pgr_dijkstra
+-----------------------------------------
+ ERROR:  Reverse_cost is not double precision
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for id only of type: integer
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for id only of type: integer
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for id only of type: integer
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Reverse_cost is not double precision
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Reverse_cost is not double precision
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Reverse_cost is not double precision
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for source only of type: integer
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for source only of type: integer
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for target only of type: integer
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for target only of type: integer
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for Cost: double precision
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for Cost: double precision
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for Cost: double precision
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for Cost: double precision
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for Cost: double precision
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+-----------------------------------------
+Any version TEST rejects bad input  pgr_dijkstra
+-----------------------------------------
+ ERROR:  Support for id only of type: integer
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for source only of type: integer
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for target only of type: integer
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  An expected column was not found in the query
+HINT:  Please veryfy the column names: id, source, target, cost
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  An expected column was not found in the query
+HINT:  Please veryfy the column names: id, source, target, cost
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  An expected column was not found in the query
+HINT:  Please veryfy the column names: id, source, target, cost
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  An expected column was not found in the query
+HINT:  Please veryfy the column names: id, source, target, cost
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for Cost: double precision
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for Cost: double precision
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for Cost: double precision
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for target only of type: integer
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment
+ ERROR:  Support for source only of type: integer
+CONTEXT:  PL/pgSQL function pgr_dijkstra(text,integer,integer,boolean,boolean) line 6 at assignment

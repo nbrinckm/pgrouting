@@ -40,7 +40,7 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id bigint, target_id bigint,
       end if;
       if pgr_versionless((pgr_version()).version, '3.0') then -- 2.x
              if (has_reverse != has_rcost)  then 
-                 if (has_reverse) then raise EXCEPTION 'has_reverse_cost set to false but reverse_cost column found';
+                 if (has_reverse) then raise NOTICE 'has_reverse_cost set to false but reverse_cost column found.... IGNORING';
                  else raise EXCEPTION 'has_reverse_cost set to true but reverse_cost not found';
                  end if;
              end if;
@@ -72,7 +72,7 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id bigint, target_id bigint,
   DECLARE
   has_reverse boolean;
   BEGIN
-      has_reverse = _pgr_reverse_cost_check(sql);
+      has_reverse = _pgr_parameter_check(sql,'ksp');
       return query SELECT seq,id1, id2, id3,cost FROM pgr_ksp(sql, source_id, target_id, k_paths, has_reverse);
   END
   $BODY$
