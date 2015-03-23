@@ -1,0 +1,68 @@
+\echo '-----------------------------------------'
+\echo '2.X TESTS return true for valid inputs types for:  pgr_dijkstra'
+\echo '-----------------------------------------'
+
+-- reverse_cost is in the query the table has the names as it should
+select count(*) from pgr_dijkstra('select * from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id, source, target, cost, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select reverse_cost, id,  target, source, cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id, cost, source, target, cost as reverse_cost from edge_table', 2, 3);
+
+
+-- reverse cost is not in the query
+select count(*) from pgr_dijkstra('select id, source, target, cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select cost, id,  source, target from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select 1 as id, 2 as source, 3 as target, cost from edge_table', 2, 3);
+
+select count(*) from pgr_dijkstra('select 1.0::integer as id, 2.0::integer as source, 3.0::integer as target, cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select 1 as id, 2.0::integer as source, 3.0::integer as target, cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select 1 as id, 2 as source, 3.0::integer as target, cost from edge_table', 2, 3);
+
+select count(*) from pgr_dijkstra('select id, source, target, -1::double precision as cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id, source, target, -1.0::double precision as cost from edge_table', 2, 3);
+
+
+
+\echo '-----------------------------------------'
+\echo '2.X TEST rejects bad input but 3.X accepts:  pgr_dijkstra'
+\echo '-----------------------------------------'
+select count(*) from pgr_dijkstra('select id as source, reverse_cost::bigint, source as id, target, cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id::bigint, source, target, cost, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id::smallint, source, target, cost, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id::real, source, target, cost, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id, reverse_cost::bigint, source, target, cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id, reverse_cost::smallint, source, target, cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id, reverse_cost::real, source, target, cost from edge_table', 2, 3);
+
+select count(*) from pgr_dijkstra('select id, source::bigint, target, cost, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id, source::smallint, target, cost, reverse_cost from edge_table', 2, 3);
+
+select count(*) from pgr_dijkstra('select id, target::bigint, source, cost, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id, target::smallint, source, cost, reverse_cost from edge_table', 2, 3);
+
+select count(*) from pgr_dijkstra('select id, cost::bigint, source, target, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id, cost::smallint, source, target, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id, cost::real, source, target, reverse_cost from edge_table', 2, 3);
+
+select count(*) from pgr_dijkstra('select id, source, target, -1 as cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id, source, target, -1.0 as cost from edge_table', 2, 3);
+
+
+\echo '-----------------------------------------'
+\echo 'Any version TEST rejects bad input  pgr_dijkstra'
+\echo '-----------------------------------------'
+select count(*) from pgr_dijkstra('select 1.0 as id, 2.0 as source, 3.0 as target, cost, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select 1 as id, 2.0 as source, 3.0 as target, cost, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select 1 as id, 2 as source, 3.0 as target, cost, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id::char, source, target, id, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id::varchar, source, target, id, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id::text, source, target, id, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id::numeric, source, target, id, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select cost::char, source, target, id, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select cost::varchar, source, target, id, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select cost::text, source, target, id, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id, target::real, source, cost, reverse_cost from edge_table', 2, 3);
+select count(*) from pgr_dijkstra('select id, source::real, target, cost, reverse_cost from edge_table', 2, 3);
+
+
+

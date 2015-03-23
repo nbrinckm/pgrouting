@@ -1,0 +1,54 @@
+-----------------------------------------
+2.X TESTS return true (reverse_cost in the query) for valid inputs types for:  _pgr_parameter_check
+-----------------------------------------
+t
+t
+t
+-----------------------------------------
+2.X TESTS return false (reverse_cost NOT in the query) for valid inputs types for:  _pgr_parameter_check
+-----------------------------------------
+f
+f
+f
+f
+f
+f
+f
+f
+f
+f
+f
+f
+-----------------------------------------
+2.X TESTS ERROR for invalid inputs types for:  _pgr_parameter_check
+-----------------------------------------
+ ERROR:  Support for id only of type: integer
+ ERROR:  Support for id only of type: integer
+ ERROR:  Support for id only of type: integer
+ ERROR:  Support for id only of type: integer
+ ERROR:  Support for id only of type: integer
+ ERROR:  Support for id only of type: integer
+ ERROR:  Support for source only of type: integer
+ ERROR:  Support for source only of type: integer
+ ERROR:  Support for source only of type: integer
+ ERROR:  Support for source only of type: integer
+ ERROR:  Support for source only of type: integer
+ ERROR:  Support for source only of type: integer
+ ERROR:  Support for target only of type: integer
+ ERROR:  Support for target only of type: integer
+ ERROR:  Support for target only of type: integer
+ ERROR:  Support for target only of type: integer
+ ERROR:  Support for target only of type: integer
+ ERROR:  Support for target only of type: integer
+ ERROR:  Support for Cost: double precision
+ ERROR:  Support for Cost: double precision
+ ERROR:  Support for Cost: double precision
+ ERROR:  Support for Cost: double precision
+ ERROR:  Support for Cost: double precision
+ ERROR:  Support for Cost: double precision
+ ERROR:  Reverse_cost is not double precision
+ ERROR:  Reverse_cost is not double precision
+ ERROR:  Reverse_cost is not double precision
+ ERROR:  Reverse_cost is not double precision
+ ERROR:  Reverse_cost is not double precision
+ ERROR:  Reverse_cost is not double precision

@@ -1,0 +1,157 @@
+-----------------------------------------
+2.X TESTS return true for valid inputs types for:  pgr_dijkstra
+-----------------------------------------
+6
+6
+6
+4
+1
+1
+2
+2
+2
+2
+1
+1
+-----------------------------------------
+2.X TEST rejects bad input but 3.X accepts:  pgr_dijkstra
+-----------------------------------------
+ ERROR:  Reverse_cost is not double precision
+CONTEXT:  PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 5 at assignment
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for id only of type: integer
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for id only of type: integer
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for id only of type: integer
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Reverse_cost is not double precision
+CONTEXT:  PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 5 at assignment
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Reverse_cost is not double precision
+CONTEXT:  PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 5 at assignment
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Reverse_cost is not double precision
+CONTEXT:  PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 5 at assignment
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for source only of type: integer
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for source only of type: integer
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for target only of type: integer
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for target only of type: integer
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for Cost: double precision
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for Cost: double precision
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for Cost: double precision
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for Cost: double precision
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for Cost: double precision
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+-----------------------------------------
+Any version TEST rejects bad input  pgr_dijkstra
+-----------------------------------------
+ ERROR:  Support for id only of type: integer
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for source only of type: integer
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for target only of type: integer
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  An expected column was not found in the query
+HINT:  Please veryfy the column names: id, source, target, cost
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  An expected column was not found in the query
+HINT:  Please veryfy the column names: id, source, target, cost
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  An expected column was not found in the query
+HINT:  Please veryfy the column names: id, source, target, cost
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  An expected column was not found in the query
+HINT:  Please veryfy the column names: id, source, target, cost
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for Cost: double precision
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for Cost: double precision
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for Cost: double precision
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for target only of type: integer
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
+ ERROR:  Support for source only of type: integer
+CONTEXT:  SQL statement "SELECT _pgr_4parameter_check(sql)"
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer,boolean,boolean) line 7 at PERFORM
+PL/pgSQL function pgr_ksp(text,bigint,bigint,integer) line 6 at RETURN QUERY
+PL/pgSQL function pgr_dijkstra(text,bigint,bigint) line 4 at RETURN QUERY
