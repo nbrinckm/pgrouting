@@ -32,8 +32,7 @@ CREATE OR REPLACE FUNCTION pgr_ksp(sql text, source_id bigint, target_id bigint,
   sqlquery text;
   v3heap_paths boolean;
   BEGIN
-      PERFORM _pgr_4parameter_check(sql);
-      has_reverse = _pgr_reverse_cost_check(sql);
+      has_reverse = _pgr_parameter_check(sql,'ksp');
       if (has_reverse) then
           sqlquery = 'select id, source, target, cost, reverse_cost  from ('||sql||') AS a';
       else

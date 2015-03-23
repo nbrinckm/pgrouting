@@ -1,0 +1,73 @@
+\echo '-----------------------------------------'
+\echo '2.X TESTS return true (reverse_cost in the query) for valid inputs types for:  _pgr_parameter_check'
+\echo '-----------------------------------------'
+
+select _pgr_parameter_check('select id, source, target, cost, reverse_cost from edge_table','dijkstra');
+select _pgr_parameter_check('select reverse_cost, id,  source, target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select * from edge_table','dijkstra');
+
+
+\echo '-----------------------------------------'
+\echo '2.X TESTS return false (reverse_cost NOT in the query) for valid inputs types for:  _pgr_parameter_check'
+\echo '-----------------------------------------'
+select _pgr_parameter_check('select 1 as id, 2 as source, 3 as target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select 1.0::integer as id, 2.0::integer as source, 3.0::integer as target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select 1 as id, 2.0::integer as source, 3.0::integer as target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select 1 as id, 2 as source, 3.0::integer as target, cost from edge_table','dijkstra');
+
+select _pgr_parameter_check('select id, source, target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select cost, id ,  source, target from edge_table','dijkstra');
+
+select _pgr_parameter_check('select id, source, target, -1::double precision as cost from edge_table','dijkstra');
+select _pgr_parameter_check('select id, source, target, -1.0::double precision as cost from edge_table','dijkstra');
+select _pgr_parameter_check('select 1 as id, 2 as source, 3 as target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select 1.0::integer as id, 2.0::integer as source, 3.0::integer as target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select 1 as id, 2.0::integer as source, 3.0::integer as target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select 1 as id, 2 as source, 3.0::integer as target, cost from edge_table','dijkstra');
+
+\echo '-----------------------------------------'
+\echo '2.X TESTS ERROR for invalid inputs types for:  _pgr_parameter_check'
+\echo '-----------------------------------------'
+
+-- id
+select _pgr_parameter_check('select id::bigint, source, target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select id::smallint, source, target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select id::real, source, target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select id::double precision, source, target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select id::varchar, source, target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select id::numeric, source, target, cost from edge_table','dijkstra');
+
+-- source
+select _pgr_parameter_check('select source::bigint, id, target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select source::smallint, id, target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select source::real, id, target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select source::double precision, id, target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select source::varchar, id, target, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select source::numeric, id, target, cost from edge_table','dijkstra');
+
+-- target
+select _pgr_parameter_check('select target::bigint, source, id, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select target::smallint, source, id, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select target::real, source, id, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select target::double precision, source, id, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select target::varchar, source, id, cost from edge_table','dijkstra');
+select _pgr_parameter_check('select target::numeric, source, id, cost from edge_table','dijkstra');
+
+-- cost
+select _pgr_parameter_check('select id, cost::bigint, source, target, reverse_cost from edge_table','dijkstra');
+select _pgr_parameter_check('select id, cost::integer, source, target, reverse_cost from edge_table','dijkstra');
+select _pgr_parameter_check('select id, cost::smallint, source, target, reverse_cost from edge_table','dijkstra');
+select _pgr_parameter_check('select id, cost::real, source, target, reverse_cost from edge_table','dijkstra');
+select _pgr_parameter_check('select id, cost::varchar, source, target, reverse_cost from edge_table','dijkstra');
+select _pgr_parameter_check('select id, cost::numeric, source, target, reverse_cost from edge_table','dijkstra');
+
+-- reverse cost
+select _pgr_parameter_check('select id, source, target, cost, reverse_cost::smallint from edge_table','dijkstra');
+select _pgr_parameter_check('select id, source, target, cost, reverse_cost::integer from edge_table','dijkstra');
+select _pgr_parameter_check('select id, source, target, cost, reverse_cost::bigint from edge_table','dijkstra');
+select _pgr_parameter_check('select id, source, target, cost, reverse_cost::real from edge_table','dijkstra');
+select _pgr_parameter_check('select id, source, target, cost, reverse_cost::numeric from edge_table','dijkstra');
+select _pgr_parameter_check('select id, source, target, cost, reverse_cost::varchar from edge_table','dijkstra');
+
+
+

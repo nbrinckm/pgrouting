@@ -3,13 +3,14 @@
 
 -----------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION _pgr_4parameter_check(sql text)
+CREATE OR REPLACE FUNCTION _pgr_parameter_check(sql text, which text)
   RETURNS boolean AS
   $BODY$
 
   DECLARE
   rec record;
   rec1 record;
+  has_reverse boolean;
 
   BEGIN
     -- checking query is executable
@@ -21,6 +22,8 @@ CREATE OR REPLACE FUNCTION _pgr_4parameter_check(sql text)
               USING HINT = sql;
     END;
 
+  -- checking  id,source,target,cost  in ('ksp'::text, 'dijkstra'::text)  
+  if (which in ('ksp'::text, 'dijkstra'::text)) then
     -- checking the fixed columns and data types of the integers
     BEGIN
       execute 'select id,source,target,cost  from ('||sql||' limit 1) AS a ' into rec;
@@ -71,25 +74,11 @@ CREATE OR REPLACE FUNCTION _pgr_4parameter_check(sql text)
         end if;
     end if;
     END;
-    return true;
-  END
-  $BODY$
-  LANGUAGE plpgsql STABLE
-  COST 1;
+  end if; --  id,source,target,cost  in ('ksp'::text, 'dijkstra'::text)  
 
 
--- if the query can not be executed returns false
-CREATE OR REPLACE FUNCTION _pgr_reverse_cost_check(sql text)
-  RETURNS bool AS
-  $BODY$
-
-  DECLARE
-  rec record;
-  rec1 record;
-  has_reverse boolean;
-
-  BEGIN 
-    -- checking the data types of the optional reverse_cost
+  -- checking optional: reverse_cost  in ('ksp'::text, 'dijkstra'::text)  
+  if (which in ('ksp'::text, 'dijkstra'::text)) then
     has_reverse = false;
     BEGIN
       execute 'select reverse_cost from ('||sql||' limit 1) AS a ' into rec1;
@@ -111,8 +100,8 @@ CREATE OR REPLACE FUNCTION _pgr_reverse_cost_check(sql text)
           end if;
         end if;
       end if;
-
     return has_reverse;
+  end if; -- checking optional: reverse_cost  in ('ksp'::text, 'dijkstra'::text)
   END
   $BODY$
   LANGUAGE plpgsql STABLE

@@ -41,8 +41,7 @@ CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, source_id integer,
   has_reverse boolean;
   sqlquery text;
   BEGIN
-      PERFORM _pgr_4parameter_check(sql);
-      has_reverse = _pgr_reverse_cost_check(sql);
+      has_reverse = _pgr_parameter_check(sql,'dijkstra');
       if (has_reverse) then
           sqlquery = 'select id, source, target, cost, reverse_cost  from ('||sql||') AS a';
       else
