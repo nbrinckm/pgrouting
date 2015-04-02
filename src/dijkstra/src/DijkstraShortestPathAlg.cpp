@@ -16,6 +16,27 @@ struct Vertex {
     long id;
     double cost;
 };
+template <class Vertex, class Tag>
+struct target_visitor : public default_dijkstra_visitor
+{
+ target_visitor(Vertex u) : v(u) { }
+
+ template <class Graph>
+ void examine_vertex(Vertex u, Graph& g)
+ {
+  if( u == v ) {
+   throw(-1);
+  }
+ }
+private:
+ Vertex v;
+};
+
+template <class Vertex, class Tag>
+target_visitor<Vertex, Tag>
+target_visit(Vertex u, Tag) {
+ return target_visitor<Vertex, Tag>(u);
+}
 
 
 /*!
@@ -49,9 +70,9 @@ BasePath DijkstraShortestPathAlg::Dijkstra(UINT source, UINT sink) {
 
 // TODO(vicky) brake this huge function into little more esay to undertand functions
 BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
-    assert(m_BestEdgesPt.size());
     BasePath path;
     path.clear();
+    if (m_BestEdgesPt.size() == 0) return path;
 
     typedef adjacency_list < listS, vecS, directedS, no_property, Vertex> graph_t;
     typedef graph_traits < graph_t >::vertex_descriptor vertex_descriptor;
@@ -89,6 +110,7 @@ BasePath DijkstraShortestPathAlg::boostDijkstra(UINT source_id, UINT sink_id) {
                 predecessor_map(&predecessors[0]).
                 weight_map(get(&Vertex::cost, graph))
                 .distance_map(&distances[0]));
+                //.distance_map(&distances[0]).visitor(target_visit(_target, on_examine_vertex())));
 
     std::deque<int> path_vect;
 
