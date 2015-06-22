@@ -16,7 +16,7 @@
 
 # A check condition to see if those variables are set
 
-SET(PG_VERSION "*" CACHE STRING "Some user-specified option")  #PG_VERSION is a commandline argument to specify the version.
+SET(PG_VERSION "" CACHE STRING "Some user-specified option")  #PG_VERSION is a commandline argument to specify the version.
 
 if(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE AND POSTGRESQL_VERSION_STRING)
     set(POSTGRESQL_FOUND TRUE)
@@ -37,7 +37,6 @@ else(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE)
         )
     message(STATUS "POSTGRESQL_PG_CONFIG is " ${POSTGRESQL_PG_CONFIG})
 
-#Checking POSTGRESQL_PG_CONFIG 
     if(POSTGRESQL_PG_CONFIG)
         execute_process(
             COMMAND ${POSTGRESQL_PG_CONFIG} --version
