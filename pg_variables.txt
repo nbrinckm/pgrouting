@@ -1,0 +1,13 @@
+List of variable that needs to be set properly to make the build working.
+
+1. -- POSTGRESQL_EXECUTABLE is /usr/lib/postgresql/8.4/bin/postgres
+2. -- POSTGRESQL_PG_CONFIG is /usr/bin/pg_config
+3. -- POSTGRESQL_INCLUDE_DIR: /usr/include/postgresql/8.4/server
+4. -- POSTGRESQL_LIBRARIES: /usr/lib
+5. -- Boost version: 1.46.1
+6. -- POSTGRESQL_VERSION_STRING is PostgreSQL 8.4.22
+7. -- POSTGRESQL_VERSION is 8.4.22
+8. -- PGSQL_VERSION is 84
+9. -- Install directory for libraries is set to /usr/lib/postgresql/8.4/lib
+10. -- Contrib directory for SQL files is set to /usr/share/postgresql/8.4/contrib/pgrouting-2.0
+
