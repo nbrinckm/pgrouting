@@ -39,9 +39,6 @@ set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MIN
 
 set(POSTGRESQL_MINIMUM_VERSION "8.4.0")
 SET(PG_VERSION "" CACHE STRING "Some user-specified option")
-message(STATUS "Mani-testing PG_VERSION " ${PG_VERSION})
-SET(POSTGRESQL_VERSION ${PG_VERSION})
-message(STATUS "Mani-testing POSTGRESQL_VERSION " ${POSTGRESQL_VERSION})
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
 string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
@@ -133,7 +130,6 @@ else(Boost_INCLUDE_DIRS)
   message(FATAL_ERROR " Please check your Boost installation ") 
 endif(Boost_INCLUDE_DIRS)
 
-message(STATUS "Mani-testing  version_string  " ${POSTGRESQL_VERSION_STRING} )
 if(NOT POSTGRESQL_VERSION_STRING)
   message(FATAL_ERROR "pg_config was not found. Please check your PostgreSQL installation!")
 endif(NOT POSTGRESQL_VERSION_STRING)
